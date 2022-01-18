@@ -1,6 +1,9 @@
-# Basic Sample Hardhat Project
+# $Melk Token
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+More information at: https://melk.gitbook.io
+
+
+## Development
 
 Try running some of the following tasks:
 
@@ -10,6 +13,17 @@ npx hardhat compile
 npx hardhat clean
 npx hardhat test
 npx hardhat node
-node scripts/sample-script.js
 npx hardhat help
 ```
+## Contract Addresses
+
+### Polygon Mumbai
+
+#### Token
+`0x6F4eFd347C2A36dB94D4DE022bE4a0C21E4Aa9ad`
+
+https://mumbai.polygonscan.com/address/0x6F4eFd347C2A36dB94D4DE022bE4a0C21E4Aa9ad
+
+
+#### Contract Creaton
+https://mumbai.polygonscan.com/tx/0xba2ac2cbc6a3d2ccaa523a83882fd4bf1615aa7d11cf15d50833938e1f1eee05
