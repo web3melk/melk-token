@@ -17,6 +17,7 @@
         "@nomiclabs/hardhat-web3": "^2.0.0",
         "@openzeppelin/test-environment": "^0.1.9",
         "@openzeppelin/test-helpers": "^0.5.15",
+        "@types/mocha": "^9.1.1",
         "chai": "^4.3.4",
         "chai-bn": "^0.3.0",
         "ethereum-waffle": "^3.4.0",
