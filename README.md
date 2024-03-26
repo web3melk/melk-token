@@ -1,6 +1,6 @@
 # $Melk Token
 
-More information at: https://melk.gitbook.io
+More information at: https://www.melkdao.xyz/
 
 
 ## Development
