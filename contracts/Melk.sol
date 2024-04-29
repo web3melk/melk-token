@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.2;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
-import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
 /// @custom:security-contact web3melk@pm.me
-contract Melk is ERC20, ERC20Burnable, Pausable, AccessControl, ERC20Permit {
+contract Melk is ERC20, ERC20Burnable, ERC20Pausable, AccessControl, ERC20Permit {
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
@@ -32,11 +32,12 @@ contract Melk is ERC20, ERC20Burnable, Pausable, AccessControl, ERC20Permit {
         _mint(to, amount);
     }
 
-    function _beforeTokenTransfer(address from, address to, uint256 amount)
+    // The following functions are overrides required by Solidity.
+
+    function _update(address from, address to, uint256 value)
         internal
-        whenNotPaused
-        override
+        override(ERC20, ERC20Pausable)
     {
-        super._beforeTokenTransfer(from, to, amount);
+        super._update(from, to, value);
     }
 }

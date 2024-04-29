@@ -3,11 +3,10 @@
 //
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-const hre = require("hardhat");
-const { LedgerSigner } = require("@anders-t/ethers-ledger");
-const { ledgerWallet } = require('../secrets.json');
+async function deploy() {
+    const hre = require("hardhat");
+    const { LedgerSigner } = require("@anders-t/ethers-ledger");
 
-async function main() {
     // Hardhat always runs the compile task when running scripts with its command
     // line interface.
     //
@@ -16,12 +15,13 @@ async function main() {
     // await hre.run('compile');
 
     // Get ledger wallet
-    const ledger = new LedgerSigner(hre.ethers.provider, ledgerWallet);
+    const ledger = new LedgerSigner(hre.ethers.provider, process.env.LEDGER_WALLET);
 
     // We get the contract to deploy
     const Melk = await hre.ethers.getContractFactory("Melk");
 
     // Connect ledger to the contractFactory
+    console.log('Open the Ethereum app on your ledger.')
     let contractFactory = await Melk.connect(ledger)
 
     // Deploy the contract
@@ -34,7 +34,7 @@ async function main() {
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
-main()
+deploy()
     .then(() => process.exit(0))
     .catch((error) => {
         console.error(error);
